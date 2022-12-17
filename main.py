@@ -1,20 +1,18 @@
-def probability_calculator(probability, total, iterations):
+def probability_calculator(probability, iterations):
   # Convert iterations to an integer
   iterations = int(iterations)
 
   # Convert the probability to a decimal value
-  probability = probability / total
-
-  print("Iteration 0: {}".format(probability))
+  probability = probability / 100
   for i in range(iterations):
-    probability = probability * (1 - probability)
-    print("Iteration {}: {}".format(i+1, probability))
-  return probability
+    result = probability**(i+1)
+    print("Iteration {}: {:.100f}".format(i+1, result * 100))
+    result = result * 100
+  return result
 
 # Get input from the user
 probability = float(input("Enter probability numerator(Out Of 100): "))
-total = 100 # float(input("Enter probability denominator: "))
 iterations = float(input("Enter the number of iterations: "))
 
 # Test the probability calculator
-print("Final Result:", probability_calculator(probability, total, iterations))
+print("Final Result: {:.100f}".format(probability_calculator(probability, iterations)))
